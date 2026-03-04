@@ -1,6 +1,6 @@
-# 🚀 Spring Boot JWT API
+#  Spring Boot JWT API
 
-## 📌 Sumário
+##  Sumário
 - [Visão geral](#-visão-geral)
 - [Tecnologias utilizadas](#-tecnologias-utilizadas)
 - [Estrutura de diretórios](#-estrutura-de-diretórios)
@@ -16,7 +16,7 @@
 
 ---
 
-## 📖 Visão geral
+##  Visão geral
 
 Este repositório contém um exemplo completo de **API RESTful** desenvolvida com **Java 17** e **Spring Boot 3**.
 
@@ -47,42 +47,6 @@ A aplicação demonstra:
 
 ---
 
-## 📂 Estrutura de diretórios
-
-
-src/
-├─ main/
-│ ├─ java/com/example/api/
-│ │ ├─ ApiApplication.java
-│ │ ├─ config/
-│ │ │ ├─ SecurityConfig.java
-│ │ │ ├─ JwtUtils.java
-│ │ │ └─ JwtAuthenticationFilter.java
-│ │ ├─ controller/
-│ │ │ ├─ AuthController.java
-│ │ │ └─ PostController.java
-│ │ ├─ dto/
-│ │ │ ├─ AuthRequest.java
-│ │ │ ├─ AuthResponse.java
-│ │ │ ├─ PostRequest.java
-│ │ │ └─ PostResponse.java
-│ │ ├─ entity/
-│ │ │ ├─ User.java
-│ │ │ ├─ Role.java
-│ │ │ └─ Post.java
-│ │ ├─ repository/
-│ │ │ ├─ UserRepository.java
-│ │ │ ├─ RoleRepository.java
-│ │ │ └─ PostRepository.java
-│ │ ├─ service/
-│ │ │ ├─ UserService.java
-│ │ │ └─ PostService.java
-│ │ └─ exception/
-│ │ └─ ResourceNotFoundException.java
-│ └─ resources/
-│ ├─ application.yml
-│ └─ data.sql
-pom.xml
 
 
 ---
@@ -115,8 +79,8 @@ URL: http://localhost:8080/h2-console
 JDBC URL: jdbc:h2:mem:demo-db
 Usuário: sa
 Senha: (vazia)
-🔐 Segurança – JWT
-🔄 Fluxo de autenticação
+Segurança – JWT
+Fluxo de autenticação
 
 Registro
 POST /api/auth/register
@@ -133,31 +97,31 @@ O JwtAuthenticationFilter valida assinatura, validade e popula o SecurityContext
 
 ⚠ Em produção, substitua a jwt.secret do application.yml por variável de ambiente.
 
-🧩 Modelos de dados
-👤 User
+Modelos de dados
+ User
 Campo	Tipo	Restrições
 id	Long	PK
 username	String	único, não nulo
 password	String	hash BCrypt
 roles	Set<Role>	@ManyToMany
-🎭 Role
+ Role
 Campo	Tipo	Restrições
 id	Long	PK
 name	String	único (ex: ROLE_USER)
-📝 Post
+ Post
 Campo	Tipo	Restrições
 id	Long	PK
 title	String	não nulo
 content	String	—
 createdAt	LocalDateTime	automático
 author	User	@ManyToOne (FK user_id)
-📦 DTOs (Data Transfer Objects)
+DTOs (Data Transfer Objects)
 DTO	Propósito	Campos	Validação
 AuthRequest	Receber credenciais	username, password	@NotBlank
 AuthResponse	Retornar token	token	—
 PostRequest	Criar/atualizar post	title, content	@NotBlank
 PostResponse	Resposta de leitura	id, title, content, createdAt, authorUsername	—
-🌐 Endpoints da API
+Endpoints da API
 Método	URL	Auth	Descrição
 POST	/api/auth/register	❌	Criar usuário
 POST	/api/auth/login	❌	Retorna JWT
@@ -167,7 +131,7 @@ GET	/api/posts/author/{authorId}	✅	Posts por autor
 PUT	/api/posts/{postId}	✅	Atualizar post
 DELETE	/api/posts/{postId}	✅	Remover post
 GET	/h2-console/**	❌	Console H2
-🧱 Camadas da aplicação
+Camadas da aplicação
 
 Controller
 Expõe endpoints e converte DTOs.
@@ -184,7 +148,7 @@ Configura rotas públicas e valida JWT.
 Exception Handling
 ResourceNotFoundException retorna 404.
 
-🚀 Como estender
+Como estender
 Funcionalidade	Como fazer
 MapStruct	Criar interfaces @Mapper
 Refresh Token	Criar entidade RefreshToken
@@ -193,7 +157,7 @@ Swagger	Adicionar springdoc-openapi
 Docker	Criar Dockerfile
 Testes	@SpringBootTest e MockMvc
 Rate Limiting	Integrar Bucket4j
-📚 Referências
+Referências
 
 https://docs.spring.io/spring-boot/docs/3.2.2/reference/html/
 
